@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Fighting Game</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.1/phaser.min.js"></script>
-  </head>
-  <body>
-    <script>
-      const config = {
-        type: Phaser.AUTO,
-        width: 800,
-        height: 600,
-        physics: {
-          default: 'arcade',
-          arcade: {
-            gravity: { y: 300 },
-            debug: false
-          }
-        },
-        scene: {
-          preload: preload,
-          create: create,
-          update: update
-        }
-      };
+<head>
+	<title>Simple Fighting Game</title>
+	<style>
+		canvas {
+			background-color: #f0f0f0;
+			border: 2px solid #000000;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="600" height="400"></canvas>
 
-      const game = new Phaser.Game(config);
-
-      function preload() {
-        // Load game assets here
-      }
-
-      function create() {
-        // Create game objects here
-      }
-
-      function update() {
-        // Update game logic here
-      }
-    </script>
-  </body>
+	<script>
+		// Set up canvas and context
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		
+		// Draw game elements
+		function draw() {
+			// Draw characters, backgrounds, and health bars
+			ctx.fillStyle = "#ff0000";
+			ctx.fillRect(50, 50, 50, 50); // Player 1 character
+			ctx.fillStyle = "#0000ff";
+			ctx.fillRect(500, 50, 50, 50); // Player 2 character
+			ctx.fillStyle = "#00ff00";
+			ctx.fillRect(50, 20, 200, 10); // Player 1 health bar
+			ctx.fillStyle = "#00ff00";
+			ctx.fillRect(350, 20, 200, 10); // Player 2 health bar
+		}
+		
+		// Implement game mechanics
+		function update() {
+			// Update game state based on user input and AI
+			// Check for collisions and apply damage
+			// Update health bars and game objects
+		}
+		
+		// Game loop
+		function gameLoop() {
+			draw();
+			update();
+			requestAnimationFrame(gameLoop);
+		}
+		
+		// Start game loop
+		gameLoop();
+	</script>
+</body>
 </html>
